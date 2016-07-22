@@ -1,5 +1,7 @@
 # docker_baikal
 
+## Baikal 0.4.5 with phusion/baseimage:0.9.19, php7 and Apache2 
+
 ### Usage
 
 ```
