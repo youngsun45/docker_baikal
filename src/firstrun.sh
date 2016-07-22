@@ -18,6 +18,9 @@ fi
 cp -r Baikal-0.4.5/. baikal/.
 rm -rf Baikal-0.4.5/
 cd /var/www/baikal
+echo HOME: $HOME
+echo COMPOSER_HOME: $COMPOSER_HOME
+echo Using curl to get composer...
 curl -s https://getcomposer.org/installer | php
 mv composer.phar composer
 ./composer install
