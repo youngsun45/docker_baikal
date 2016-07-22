@@ -22,7 +22,7 @@ chmod +x /etc/my_init.d/firstrun.sh && \
 
 # update apt and get dependencies etc..
 apt-get update && \
-apt-get install -y wget apache2 php7 php7-sqlite && \
+apt-get install -y wget apache2 php7.0 libapache2-mod-php7.0 php7.0-sqlite && \
 
 # Enable apache mods.
 a2enmod php5 && \
