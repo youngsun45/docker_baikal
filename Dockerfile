@@ -25,7 +25,7 @@ apt-get update && \
 apt-get install -y wget apache2 php7.0 libapache2-mod-php7.0 php7.0-sqlite && \
 
 # Enable apache mods.
-a2enmod php5 && \
+a2enmod php7.0 && \
 a2enmod rewrite && \
 
 # Update the PHP.ini file, enable <? ?> tags and quieten logging.
