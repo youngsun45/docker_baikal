@@ -21,12 +21,6 @@ ADD src/ /root/
 # expose port(s)
 EXPOSE 80
 
-# Composer
-RUN cd /tmp && \
-    curl -sS https://getcomposer.org/installer | php && \
-    mv composer.phar /usr/local/bin/composer && \
-    chmod 755 /usr/local/bin/composer
-
 # startup files
 RUN mkdir -p /etc/service/apache && \
 mv /root/apache.sh /etc/service/apache/run && \
@@ -48,4 +42,8 @@ sed -i "s/short_open_tag = Off/short_open_tag = On/" /etc/php/7.0/apache2/php.in
 sed -i "s/error_reporting = .*$/error_reporting = E_ERROR | E_WARNING | E_PARSE/" /etc/php/7.0/apache2/php.ini && \
 mv /root/apache-config.conf /etc/apache2/sites-enabled/000-default.conf
 
-
+# Composer
+RUN cd /tmp && \
+    curl -sS https://getcomposer.org/installer | php && \
+    mv composer.phar /usr/local/bin/composer && \
+    chmod 755 /usr/local/bin/composer
