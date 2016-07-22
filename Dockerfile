@@ -4,7 +4,15 @@ FROM phusion/baseimage:0.9.19
 MAINTAINER Mike Ratcliffe <mratcliffe@mozilla.com>
 
 # Set environment variables for my_init, terminal and apache
-ENV DEBIAN_FRONTEND=noninteractive HOME="/root" TERM=xterm APACHE_RUN_USER=www-data APACHE_RUN_GROUP=www-data APACHE_LOG_DIR="/var/log/apache2" APACHE_LOCK_DIR="/var/lock/apache2" APACHE_PID_FILE="/var/run/apache2.pid"
+ENV DEBIAN_FRONTEND noninteractive
+ENV HOME /root
+ENV TERM xterm
+ENV APACHE_RUN_USER www-data
+ENV APACHE_RUN_GROUP www-data
+ENV APACHE_LOG_DIR /var/log/apache2
+ENV APACHE_LOCK_DIR /var/lock/apache2
+ENV APACHE_PID_FILE /var/run/apache2.pid
+
 CMD ["/sbin/my_init"]
 
 # add local files
@@ -12,6 +20,12 @@ ADD src/ /root/
 
 # expose port(s)
 EXPOSE 80
+
+# Composer
+RUN cd /tmp && \
+    curl -sS https://getcomposer.org/installer | php && \
+    mv composer.phar /usr/local/bin/composer && \
+    chmod 755 /usr/local/bin/composer
 
 # startup files
 RUN mkdir -p /etc/service/apache && \

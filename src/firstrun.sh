@@ -12,20 +12,14 @@ rm 0.4.5.tar.gz
 if [ -f "/var/www/baikal/Specific/db/db.sqlite" ]; then
 rm -rf Baikal-0.4.5/Specific
 else
-  mkdir /var/www/baikal
+mkdir -p /var/www/baikal/Specific
+touch /var/www/baikal/Specific/ENABLE_INSTALL
 fi
 
 cp -r Baikal-0.4.5/. baikal/.
 rm -rf Baikal-0.4.5/
 cd /var/www/baikal
-echo HOME: $HOME
-echo COMPOSER_HOME: $COMPOSER_HOME
-echo Using curl to get composer...
-curl -s https://getcomposer.org/installer | php
-mv composer.phar composer
-./composer install
-cd /var/www/baikal/Specific
-touch ENABLE_INSTALL
+composer install
 chown -R www-data:www-data /var/www/baikal
 fi
 
