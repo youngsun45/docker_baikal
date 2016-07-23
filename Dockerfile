@@ -6,6 +6,7 @@ MAINTAINER Mike Ratcliffe <mratcliffe@mozilla.com>
 # Set environment variables for my_init, terminal and apache
 ENV DEBIAN_FRONTEND noninteractive
 ENV HOME /root
+ENV COMPOSER_HOME $HOME/.composer
 ENV TERM xterm
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
@@ -43,7 +44,6 @@ sed -i "s/error_reporting = .*$/error_reporting = E_ERROR | E_WARNING | E_PARSE/
 mv /root/apache-config.conf /etc/apache2/sites-enabled/000-default.conf
 
 # Composer
-RUN cd /tmp && \
-    curl -sS https://getcomposer.org/installer | php && \
-    mv composer.phar /usr/local/bin/composer && \
+RUN mkdir -p $COMPOSER_HOME && \
+    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
     chmod 755 /usr/local/bin/composer
