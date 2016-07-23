@@ -1,6 +1,6 @@
 # docker_baikal
 
-## Baikal 0.4.5 with phusion/baseimage:0.9.19, php7 and Apache2 
+## Baikal 0.4.5 with phusion/baseimage:0.9.19, php7.0 and Apache2
 
 ### Usage
 
@@ -13,5 +13,9 @@ docker run \
     sparklyballs/baikal
 ```
 
-`local-baikal-sqlite-db-path` is the optional local path you want to use for a
-sqlite db. this has the advantage of preserving your data.
+
+`local-baikal-sqlite-db-path` (optional) is a local path you want to use for a
+sqlite db. This has the advantage of simplifying backups and preserving your
+data.
+
+If you don't want to use sqlite then simply omit that line.
