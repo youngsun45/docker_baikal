@@ -1,7 +1,7 @@
 # set base os
 FROM phusion/baseimage:0.9.19
 
-MAINTAINER Mike Ratcliffe <mratcliffe@mozilla.com>
+MAINTAINER youngsun45 <youngsun45@mozilla.com>
 
 # Set environment variables for my_init, terminal and apache
 ENV DEBIAN_FRONTEND noninteractive
@@ -32,7 +32,7 @@ chmod +x /etc/my_init.d/firstrun.sh && \
 # update apt and get dependencies etc..
 apt-get update && \
 apt-get install -y wget apache2 php7.0 libapache2-mod-php7.0 php7.0-sqlite \
-                   php7.0-xml php7.0-mbstring zip && \
+                   php7.0-xml php7.0-mbstring zip phpmyadmin && \
 
 # Enable apache mods.
 a2enmod php7.0 && \
